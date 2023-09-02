@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import Login from "./Login";
+import Register from "./Register";
 
+const authModelEnum = {
+  LOGIN: "LOGIN",
+  REGISTER: "REGISTER",
+};
 const Authentication = () => {
-  return <div>Authentication</div>;
+  const [authMode, setAuthMode] = useState(authModelEnum.LOGIN);
+  return authMode === authModelEnum.LOGIN ? <Login /> : <Register />;
 };
 
 export default Authentication;
