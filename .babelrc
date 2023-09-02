@@ -9,7 +9,8 @@
           "p-components": "./src/components",
           "p-pages": "./src/pages",
           "p-utils": "./src/utils",
-          "p-styles": "./src/styles"
+          "p-styles": "./src/styles",
+          "p-reducers": "./src/reducers"
         }
       }
     ]
