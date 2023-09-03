@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Login from "./Login";
-import Register from "./SignUp";
+import Register from "./Register";
 
 export const authModeEnum = {
   LOGIN: "LOGIN",
