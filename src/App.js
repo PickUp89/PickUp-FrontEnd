@@ -7,10 +7,11 @@ import {
 } from "react-router-dom";
 import Authentication from "./pages/Authentication/Authentication";
 import Home from "./pages/Home/Home";
-import { connect, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
-const App = ({ isAuthenticated }) => {
+const App = () => {
   const state = useSelector((state) => state);
+  const isAuthenticated = useSelector((state) => state?.user?.isAuthenticated);
   return (
     <Router>
       <Routes>
@@ -29,8 +30,5 @@ const App = ({ isAuthenticated }) => {
     </Router>
   );
 };
-const mapStateToProps = (state) => ({
-  isAuthenticated: state.user.isAuthenticated,
-});
 
-export default connect(mapStateToProps)(App);
+export default App;
