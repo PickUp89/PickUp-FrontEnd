@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { loginWithEmailAsync } from "../../thunks/loginWithEmailAsyncThunk";
+import { loginWithEmailAsync } from "../../thunks/authThunks";
 import { useDispatch, useSelector } from "react-redux";
 
 import {

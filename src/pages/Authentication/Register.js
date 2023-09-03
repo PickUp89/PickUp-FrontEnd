@@ -1,33 +1,108 @@
-import * as React from "react";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
+import React, { useState } from "react";
+import {
+  Avatar,
+  Button,
+  Alert,
+  CssBaseline,
+  TextField,
+  FormControlLabel,
+  Checkbox,
+  Link,
+  Grid,
+  Box,
+  Typography,
+  Container,
+  createTheme,
+  ThemeProvider,
+} from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const defaultTheme = createTheme();
 
-export default function SignUp({ toggleAuthMode }) {
-  const handleSubmit = (event) => {
-    event.preventDefault();
+const creationStatusEnum = {
+  LOADING: "loading",
+  SUCCESS: "success",
+  ERROR: "error",
+  INVALID: "invalid",
+};
+
+export default function Register({ toggleAuthMode }) {
+  const [registerStatus, setRegisterStatus] = useState(null);
+
+  const handleSubmit = async (event) => {
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    event.preventDefault();
+    // Email Validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isEmailValid = emailRegex.test(data.get("email"));
+
+    // Password Validation
+    const password = data.get("password");
+    const isPasswordValid =
+      password.length >= 8 && /[a-zA-Z]/.test(password) && /\d/.test(password);
+
+    if (!isEmailValid || !isPasswordValid) {
+      setRegisterStatus(creationStatusEnum.INVALID);
+      return;
+    }
+
+    try {
+      const apiUrl = process.env.REACT_APP_BACKEND_URL;
+      const response = await fetch(`${apiUrl}/pickup/auth/register/email`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: data.get("email"),
+          firstName: data.get("firstName"),
+          lastName: data.get("lastName"),
+          password: data.get("password"),
+        }),
+      });
+      const responseData = await response.json();
+      if (!response.ok) {
+        throw new Error(responseData);
+      }
+      setRegisterStatus(creationStatusEnum.SUCCESS);
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      toggleAuthMode();
+    } catch (error) {
+      console.error(error);
+      setRegisterStatus(creationStatusEnum.ERROR);
+    }
+  };
+
+  const renderStatusAlert = () => {
+    if (!registerStatus) return;
+    if (registerStatus === creationStatusEnum.LOADING) return; // Should have a gif of loading here;
+    if (registerStatus === creationStatusEnum.SUCCESS) {
+      return (
+        <Alert severity="success">
+          Your account has been created, please log in
+        </Alert>
+      );
+    }
+    if (registerStatus === creationStatusEnum.ERROR) {
+      return (
+        <Alert severity="error">
+          This email is already used, please use a different email
+        </Alert>
+      );
+    }
+    if (registerStatus === creationStatusEnum.INVALID) {
+      return (
+        <Alert severity="error">
+          Your email or password is invalid, please try again
+        </Alert>
+      );
+    }
   };
 
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
+        {renderStatusAlert()}
         <CssBaseline />
         <Box
           sx={{
