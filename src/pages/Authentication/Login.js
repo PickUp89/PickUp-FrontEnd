@@ -33,7 +33,7 @@ export default function SignIn({ toggleAuthMode }) {
     dispatch(loginWithEmailAsync({ email: userEmail, password: userPassword }));
   };
 
-  const apiError = useSelector((state) => state.user.error);
+  const apiError = useSelector((state) => state?.user?.error);
 
   return (
     <ThemeProvider theme={defaultTheme}>
