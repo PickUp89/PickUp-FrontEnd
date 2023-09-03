@@ -4,16 +4,14 @@ export const loginWithEmailAsync = createAsyncThunk(
   "user/login",
   async ({ email, password }) => {
     try {
-      const response = await fetch(
-        `http://localhost:13000/pickup/auth/login/email`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email, password }),
-        }
-      );
+      const apiUrl = process.env.REACT_APP_BACKEND_URL;
+      const response = await fetch(`${apiUrl}/pickup/auth/login/email`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
       const responseData = await response.json();
       if (!response.ok) {
         throw new Error(responseData);
