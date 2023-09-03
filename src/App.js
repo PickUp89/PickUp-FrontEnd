@@ -7,21 +7,22 @@ import {
 } from "react-router-dom";
 import Authentication from "./pages/Authentication/Authentication";
 import Home from "./pages/Home/Home";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 
 const App = ({ isAuthenticated }) => {
+  const state = useSelector((state) => state);
   return (
     <Router>
       <Routes>
         {isAuthenticated ? (
           <>
             <Route path="/home" element={<Home />} />
-            <Route path="/" element={<Navigate to="/home" />} />
+            <Route path="/auth" element={<Navigate to="/home" />} />
           </>
         ) : (
           <>
             <Route path="/auth" element={<Authentication />} />
-            <Route path="/" element={<Navigate to="/auth" />} />
+            <Route path="*" element={<Navigate to="/auth" />} />
           </>
         )}
       </Routes>
