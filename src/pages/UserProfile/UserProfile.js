@@ -1,10 +1,39 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Paper, Typography, Grid, Box, Avatar } from "@mui/material";
+import pageStatus from "../../utils/pageStatusEnum";
+import Loading from "../../components/Loading/Loading";
+import GenericErrorBanner from "../../components/Banner/GenericErrorBanner";
 
 function UserProfile() {
   const { userId } = useParams();
+  const [userData, setUserData] = useState();
+  const [status, setStatus] = useState(pageStatus.LOADING);
 
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const apiHost = process.env.REACT_APP_BACKEND_URL;
+        const url = `${apiHost}/users/get?id=${userId}`;
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`Error fetching user data: ${response.statusText}`);
+        }
+        const data = await response.json();
+        setUserData(data);
+        setStatus(pageStatus.SUCCESS);
+      } catch (e) {
+        console.error(e);
+        setStatus(pageStatus.ERROR);
+      }
+    };
+
+    fetchUserData();
+  }, [userId]);
+
+  if (status === pageStatus.LOADING) return <Loading />;
+  if (status === pageStatus.ERROR) return <GenericErrorBanner />;
+  console.log(userData.profilePicture);
   return (
     <Paper
       sx={{
@@ -46,21 +75,21 @@ function UserProfile() {
           >
             <Typography
               component="h1"
-              variant="h3"
+              variant="h2"
               color="inherit"
               gutterBottom
             >
-              Title
+              {`${userData.firstName} ${userData.lastName}`}
             </Typography>
             <Typography variant="h5" color="inherit" paragraph>
-              Description
+              {`${userData.location || "Charlottetown, Canada"}`}
             </Typography>
           </Box>
         </Grid>
         <Grid item md={3}>
           <Avatar
             alt="User Profile"
-            src=""
+            src={`data:image/jpeg;base64,${userData.profilePicture}`}
             sx={{ width: 200, height: 200, borderRadius: "50%", margin: 2 }}
           />
         </Grid>
