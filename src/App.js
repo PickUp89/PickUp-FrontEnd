@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Authentication from "./pages/Authentication/Authentication";
 import Home from "./pages/Home/Home";
+import EntryPage from "./pages/Entry/Entry";
 import { useSelector } from "react-redux";
 
 const App = () => {
@@ -24,7 +25,8 @@ const App = () => {
         ) : (
           <>
             <Route path="/auth" element={<Authentication />} />
-            <Route path="*" element={<Navigate to="/auth" />} />
+            <Route path="/" element={<EntryPage />} />
+            <Route path="*" element={<Navigate to="/" />} />
           </>
         )}
       </Routes>
