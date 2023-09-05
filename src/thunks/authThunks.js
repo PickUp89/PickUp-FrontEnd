@@ -5,7 +5,7 @@ export const loginWithEmailAsync = createAsyncThunk(
   async ({ email, password }) => {
     try {
       const apiUrl = process.env.REACT_APP_BACKEND_URL;
-      const response = await fetch(`${apiUrl}/pickup/auth/login/email`, {
+      const response = await fetch(`${apiUrl}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
