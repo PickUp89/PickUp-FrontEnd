@@ -20,7 +20,7 @@ const App = () => {
         {isAuthenticated ? (
           <>
             <Route path="/home" element={<Home />} />
-            <Route path="/user" element={<UserProfile />} />
+            <Route path="/user/:userId" element={<UserProfile />} />
             <Route path="/auth" element={<Navigate to="/home" />} />
           </>
         ) : (
