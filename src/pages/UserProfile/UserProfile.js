@@ -1,14 +1,117 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Paper, Typography, Grid, Box, Avatar } from "@mui/material";
+import {
+  Paper,
+  Typography,
+  Grid,
+  Box,
+  Avatar,
+  CircularProgress,
+} from "@mui/material";
 import pageStatus from "../../utils/pageStatusEnum";
 import Loading from "../../components/Loading/Loading";
 import GenericErrorBanner from "../../components/Banner/GenericErrorBanner";
+
+const UserStats = (userData, isHovered, setIsHovered) => {
+  const gamesPlayed = 40;
+  const maxGames = 100;
+  const tournamentsPlayed = 5;
+  const maxTournaments = 10;
+
+  return (
+    <Grid
+      container
+      justifyContent="center"
+      alignItems="center"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <Grid item>
+        <Typography variant="h5" color="inherit" paragraph>
+          <Grid container alignItems="center">
+            <Grid item>
+              <CircularProgress
+                variant="determinate"
+                value={((userData?.sports?.length || 0) / 30) * 100}
+                size={60}
+                thickness={6}
+                style={{ visibility: isHovered ? "hidden" : "visible" }}
+              />
+              <span
+                style={{
+                  fontSize: "2rem",
+                  marginRight: "8px",
+                  visibility: isHovered ? "visible" : "hidden",
+                }}
+              >
+                {userData?.sports?.length || 0}
+              </span>
+            </Grid>
+            <Grid item>Sports</Grid>
+          </Grid>
+        </Typography>
+      </Grid>
+
+      <Grid item>
+        <Typography variant="h5" color="inherit" paragraph>
+          <Grid container alignItems="center">
+            <Grid item>
+              <CircularProgress
+                variant="determinate"
+                value={(gamesPlayed / maxGames) * 100}
+                size={60}
+                thickness={6}
+                style={{ visibility: isHovered ? "hidden" : "visible" }}
+              />
+              <span
+                style={{
+                  fontSize: "2rem",
+                  margin: "0 8px",
+                  visibility: isHovered ? "visible" : "hidden",
+                }}
+              >
+                {gamesPlayed}
+              </span>
+            </Grid>
+            <Grid item>Games</Grid>
+          </Grid>
+        </Typography>
+      </Grid>
+
+      <Grid item>
+        <Typography variant="h5" color="inherit" paragraph>
+          <Grid container alignItems="center">
+            <Grid item>
+              <CircularProgress
+                variant="determinate"
+                value={(tournamentsPlayed / maxTournaments) * 100}
+                size={60}
+                thickness={6}
+                style={{ visibility: isHovered ? "hidden" : "visible" }}
+              />
+              <span
+                style={{
+                  fontSize: "2rem",
+                  marginLeft: "8px",
+                  visibility: isHovered ? "visible" : "hidden",
+                }}
+              >
+                {tournamentsPlayed}
+              </span>
+            </Grid>
+            <Grid item>Tournaments</Grid>
+          </Grid>
+        </Typography>
+      </Grid>
+    </Grid>
+  );
+};
 
 function UserProfile() {
   const { userId } = useParams();
   const [userData, setUserData] = useState();
   const [status, setStatus] = useState(pageStatus.LOADING);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -97,13 +200,7 @@ function UserProfile() {
         </Grid>
       </Paper>
 
-      <Grid container justifyContent="center" alignItems="center">
-        <Typography variant="h5" color="inherit" paragraph>
-          <span style={{ fontSize: "2rem" }}> 3 </span> Sports |
-          <span style={{ fontSize: "2rem" }}> 25 </span> Games |
-          <span style={{ fontSize: "2rem" }}> 4 </span> Tournaments
-        </Typography>
-      </Grid>
+      {UserStats(userData, isHovered, setIsHovered)}
 
       {userData.biography && (
         <Grid style={{ marginLeft: "4rem", marginRight: "4rem" }}>
