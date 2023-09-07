@@ -35,66 +35,87 @@ function UserProfile() {
   if (status === pageStatus.ERROR) return <GenericErrorBanner />;
   console.log(userData.profilePicture);
   return (
-    <Paper
-      sx={{
-        position: "relative",
-        backgroundColor: "grey.800",
-        color: "#fff",
-        mb: 4,
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-        backgroundImage: `url(https://source.unsplash.com/random?wallpapers)`,
-      }}
-    >
-      {
-        <img
-          style={{ display: "none" }}
-          src="https://source.unsplash.com/random?wallpapers"
-          alt="Nothing"
-        />
-      }
-      <Box
+    <>
+      <Paper
         sx={{
-          position: "absolute",
-          top: 0,
-          bottom: 0,
-          right: 0,
-          left: 0,
-          backgroundColor: "rgba(0,0,0,.3)",
+          position: "relative",
+          backgroundColor: "grey.800",
+          color: "#fff",
+          mb: 4,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundImage: `url(https://source.unsplash.com/random?wallpapers)`,
         }}
-      />
-      <Grid container>
-        <Grid item md={9}>
-          <Box
-            sx={{
-              position: "relative",
-              p: { xs: 3, md: 6 },
-              pr: { md: 0 },
-            }}
-          >
-            <Typography
-              component="h1"
-              variant="h2"
-              color="inherit"
-              gutterBottom
-            >
-              {`${userData.firstName} ${userData.lastName}`}
-            </Typography>
-            <Typography variant="h5" color="inherit" paragraph>
-              {`${userData.location || "Charlottetown, Canada"}`}
-            </Typography>
-          </Box>
-        </Grid>
-        <Grid item md={3}>
-          <Avatar
-            alt="User Profile"
-            src={`data:image/jpeg;base64,${userData.profilePicture}`}
-            sx={{ width: 200, height: 200, borderRadius: "50%", margin: 2 }}
+      >
+        {
+          <img
+            style={{ display: "none" }}
+            src="https://source.unsplash.com/random?wallpapers"
+            alt="Nothing"
           />
+        }
+        <Box
+          sx={{
+            position: "absolute",
+            top: 0,
+            bottom: 0,
+            right: 0,
+            left: 0,
+            backgroundColor: "rgba(0,0,0,.3)",
+          }}
+        />
+        <Grid container>
+          <Grid item md={9}>
+            <Box
+              sx={{
+                position: "relative",
+                p: { xs: 3, md: 6 },
+                pr: { md: 0 },
+              }}
+            >
+              <Typography
+                component="h1"
+                variant="h2"
+                color="inherit"
+                gutterBottom
+              >
+                {`${userData.firstName} ${userData.lastName}`}
+              </Typography>
+              <Typography variant="h5" color="inherit" paragraph>
+                {`${userData.location || "Charlottetown, Canada"}`}
+              </Typography>
+            </Box>
+          </Grid>
+          <Grid item md={3}>
+            <Avatar
+              alt="User Profile"
+              src={`data:image/jpeg;base64,${userData.profilePicture}`}
+              sx={{ width: 200, height: 200, borderRadius: "50%", margin: 2 }}
+            />
+          </Grid>
         </Grid>
+      </Paper>
+
+      <Grid container justifyContent="center" alignItems="center">
+        <Typography variant="h5" color="inherit" paragraph>
+          <span style={{ fontSize: "2rem" }}> 3 </span> Sports |
+          <span style={{ fontSize: "2rem" }}> 25 </span> Games |
+          <span style={{ fontSize: "2rem" }}> 4 </span> Tournaments
+        </Typography>
       </Grid>
-    </Paper>
+
+      {userData.biography && (
+        <Grid style={{ marginLeft: "4rem", marginRight: "4rem" }}>
+          <Typography variant="h6" color="primary">
+            {`About ${userData.firstName}`}
+          </Typography>
+          <Typography variant="body1" color="textSecondary" paragraph>
+            {userData.biography}
+          </Typography>
+        </Grid>
+      )}
+    </>
   );
 }
 
