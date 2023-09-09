@@ -132,17 +132,16 @@ export default function Register({ toggleAuthMode }) {
           >
             <Box
               sx={{
-                marginTop: 8,
+                marginTop: "0",
                 display: "flex",
                 flexDirection: "column",
-                alignItems: "center",
               }}
             >
-              <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-                <LockOutlinedIcon />
-              </Avatar>
               <Typography component="h1" variant="h5">
-                Sign up
+                Welcome to <span style={{ fontWeight: "bold" }}>Pick Up</span>!
+              </Typography>
+              <Typography component="h1" variant="subtitle2">
+                Please sign-in to your account to start your journey with us.
               </Typography>
               <Box
                 component="form"

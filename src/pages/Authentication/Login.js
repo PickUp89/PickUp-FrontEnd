@@ -19,8 +19,13 @@ import {
   Paper,
   createTheme,
   ThemeProvider,
+  Divider,
+  IconButton,
 } from "@mui/material";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import FacebookIcon from "@mui/icons-material/Facebook"; // Import Facebook icon
+import GoogleIcon from "@mui/icons-material/Google";
+import MicrosoftIcon from "@mui/icons-material/Microsoft"; // Import Microsoft icon
+import TwitterIcon from "@mui/icons-material/Twitter";
 
 const defaultTheme = createTheme();
 
@@ -63,67 +68,19 @@ export default function SignIn({ toggleAuthMode }) {
               mx: 4,
               display: "flex",
               flexDirection: "column",
-              alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-              <LockOutlinedIcon />
-            </Avatar>
             <Typography component="h1" variant="h5">
-              Sign in
+              Welcome to <span style={{ fontWeight: "bold" }}>Pick Up</span>!
             </Typography>
-            {/* <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign In
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
-            <Copyright sx={{ mt: 5 }} />
-          </Box> */}
+            <Typography component="h1" variant="subtitle2">
+              Please sign-in to your account to start your journey with us.
+            </Typography>
             <Box
               component="form"
               onSubmit={handleSubmit}
               noValidate
-              sx={{ mt: 1 }}
+              sx={{ mt: 1, mb: 2 }}
             >
               <TextField
                 margin="normal"
@@ -169,6 +126,71 @@ export default function SignIn({ toggleAuthMode }) {
                   </Link>
                 </Grid>
               </Grid>
+            </Box>
+
+            {/* Divider */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginTop: "2rem",
+              }}
+            >
+              <hr style={{ width: "40%", borderTop: "1px solid #ccc" }} />
+              <Typography
+                variant="body2"
+                color="textSecondary"
+                sx={{ marginX: 2, fontWeight: "bold" }}
+              >
+                OR
+              </Typography>
+              <hr style={{ width: "40%", borderTop: "1px solid #ccc" }} />
+            </div>
+
+            {/* Social Media Icons */}
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                mt: 2,
+              }}
+            >
+              {/* Google Icon */}
+              <IconButton
+                variant="outlined"
+                color="primary"
+                sx={{ marginRight: 2, alignItems: "center" }}
+                size="small"
+              >
+                <GoogleIcon fontSize="medium" />
+              </IconButton>
+
+              {/* Facebook Icon */}
+              <IconButton
+                size="small"
+                variant="outlined"
+                color="primary"
+                sx={{ marginRight: 2, alignItems: "center" }}
+              >
+                <FacebookIcon fontSize="medium" />
+              </IconButton>
+
+              {/* Microsoft Icon */}
+              <IconButton
+                variant="outlined"
+                color="primary"
+                sx={{ marginRight: 2, alignItems: "center" }}
+                size="small"
+              >
+                <MicrosoftIcon fontSize="medium" />
+              </IconButton>
+
+              {/* Twitter Icon */}
+              <IconButton size="small" variant="outlined" color="primary">
+                <TwitterIcon fontSize="medium" />
+              </IconButton>
             </Box>
           </Box>
         </Grid>
