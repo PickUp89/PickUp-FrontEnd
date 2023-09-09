@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Authentication from "./pages/Authentication/Authentication";
 import Home from "./pages/Home/Home";
+import UserProfile from "./pages/UserProfile/UserProfile";
 import { useSelector } from "react-redux";
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
         {isAuthenticated ? (
           <>
             <Route path="/home" element={<Home />} />
+            <Route path="/user/:userId" element={<UserProfile />} />
             <Route path="/auth" element={<Navigate to="/home" />} />
           </>
         ) : (
