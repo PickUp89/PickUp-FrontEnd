@@ -48,7 +48,7 @@ export default function Register({ toggleAuthMode }) {
 
     try {
       const apiUrl = process.env.REACT_APP_BACKEND_URL;
-      const response = await fetch(`${apiUrl}/pickup/auth/register/email`, {
+      const response = await fetch(`${apiUrl}/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
