@@ -19,6 +19,7 @@ export default function EventCard() {
     coverImage: testImage,
     level: "Advanced",
   };
+  
   const { name, date, attendees, location, coverImage, level } = eventInfo;
   return (
     <Card sx={{ width: 500, backgroundColor: "white" }}>

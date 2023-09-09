@@ -16,6 +16,9 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import { Margin } from "@mui/icons-material";
+import HowItWorks from "../../components/HowItWorks/HowItWorks";
+import UpcomingGames from "../../components/UpcomingGames/UpcomingGames";
+import EventCard from "../../components/EventCard/EventCard";
 
 function Copyright() {
   return (
@@ -54,7 +57,7 @@ const cards = [
   },
 ];
 
-const cards2 = [1, 2, 3];
+const cards2 = [1, 2, 3, 4, 5];
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
@@ -121,24 +124,24 @@ export default function EntryPage() {
       <main>
         {/* Headers */}
 
-        {/* How Does Pick Up Work*/}
+        {/* FIND NEW FRIENDS, STAY ACTIVE */}
         <Container sx={{ py: 25 }} maxWidth="xl">
           {/* Card Sections */}
           <Grid container spacing={8}>
             {cards.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={4}>
                 <Card
-                  variant = 'plain'
+                  variant="plain"
                   sx={{
                     height: "100%",
-                    flexDirection: "column"
+                    flexDirection: "column",
                   }}
                 >
                   <CardMedia
                     component="div"
                     sx={{
-                     height: '15rem',
-                     borderRadius: '10px',
+                      height: "15rem",
+                      borderRadius: "10px",
                     }}
                     image={card.imageUrl}
                   />
@@ -148,7 +151,7 @@ export default function EntryPage() {
                     </Typography>
                     <Typography>{card.description}</Typography>
                   </CardContent>
-                  <CardActions sx={{height: '10px'}}>
+                  <CardActions sx={{ height: "10px" }}>
                     {card.action}
                   </CardActions>
                 </Card>
@@ -157,86 +160,17 @@ export default function EntryPage() {
           </Grid>
         </Container>
 
-        {/* FIND NEW FRIENDS, STAY ACTIVE */}
-        <Container sx={{ py: 4 }} maxWidth="md">
-          {/* Card Sections*/}
-          <Grid container spacing={4}>
-            {cards2.map((card) => (
-              <Grid item key={card} xs={18} sm={12} md={12}>
-                <Card
-                  sx={{
-                    height: "100%",
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
-                >
-                  <CardMedia
-                    component="div"
-                    sx={{
-                      // 16:9
-                      pt: "56.25%",
-                    }}
-                    image="https://source.unsplash.com/random?wallpapers"
-                  />
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Heading
-                    </Typography>
-                    <Typography>
-                      This is a media card. You can use this section to describe
-                      the content.
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small">View</Button>
-                    <Button size="small">Edit</Button>
-                  </CardActions>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
+        {/* How PickUp works*/}
+        <Typography variant="h2" align="center">
+          How PickUp Works
+        </Typography>
+        <HowItWorks></HowItWorks>
 
-        {/* UPCOMING EVENTS */}
-        <Container sx={{ py: 8 }} maxWidth="md">
-          {/* Card Sections*/}
-          <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <Card
-                  sx={{
-                    height: "100%",
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
-                >
-                  <CardMedia
-                    component="div"
-                    sx={{
-                      // 16:9
-                      pt: "56.25%",
-                    }}
-                    image="https://source.unsplash.com/random?wallpapers"
-                  />
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Heading
-                    </Typography>
-                    <Typography>
-                      This is a media card. You can use this section to describe
-                      the content.
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small">View</Button>
-                    <Button size="small">Edit</Button>
-                  </CardActions>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-        <h2>Upcoming Games</h2>
+        <Typography variant="h5" align="center" marginBottom={5}>
+          Upcoming PickUp Games
+        </Typography>
+        <UpcomingGames></UpcomingGames>
+        <EventCard />
         <ImageList
           sx={{
             gridAutoFlow: "column",
