@@ -74,13 +74,13 @@ export default function SignIn({ toggleAuthMode }) {
               Welcome to <span style={{ fontWeight: "bold" }}>Pick Up</span>!
             </Typography>
             <Typography component="h1" variant="subtitle2">
-              Please sign-in to your account to start your journey with us.
+              Please sign-in to your account to join our community.
             </Typography>
             <Box
               component="form"
               onSubmit={handleSubmit}
               noValidate
-              sx={{ mt: 1, mb: 2 }}
+              sx={{ mt: 2, mb: 2 }}
             >
               <TextField
                 margin="normal"
@@ -163,6 +163,9 @@ export default function SignIn({ toggleAuthMode }) {
                 color="primary"
                 sx={{ marginRight: 2, alignItems: "center" }}
                 size="small"
+                onClick={() => {
+                  window.location.href = `${process.env.REACT_APP_BACKEND_URL}/auth/google`;
+                }}
               >
                 <GoogleIcon fontSize="medium" />
               </IconButton>

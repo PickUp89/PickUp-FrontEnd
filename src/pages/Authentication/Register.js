@@ -16,7 +16,6 @@ import {
   createTheme,
   ThemeProvider,
 } from "@mui/material";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
 const defaultTheme = createTheme();
 
@@ -141,13 +140,14 @@ export default function Register({ toggleAuthMode }) {
                 Welcome to <span style={{ fontWeight: "bold" }}>Pick Up</span>!
               </Typography>
               <Typography component="h1" variant="subtitle2">
-                Please sign-in to your account to start your journey with us.
+                Ready to join our community? Sign up now to begin your journey
+                with us!
               </Typography>
               <Box
                 component="form"
                 noValidate
                 onSubmit={handleSubmit}
-                sx={{ mt: 3 }}
+                sx={{ mt: 4 }}
               >
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={6}>
