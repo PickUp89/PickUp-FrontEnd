@@ -43,7 +43,10 @@ export default function EventCard() {
       </AspectRatio>
       <CardContent orientation="horizontal">
         <div style={{ marginTop: "auto" }}>
-          <Typography fontSize="lg" level="body-xs">
+          <Typography fontSize="sm" fontWeight="lg">
+            {level}
+          </Typography>
+          <Typography fontSize="sm" level="body-xs">
             {attendees.length || 0} Attendees
           </Typography>
         </div>
