@@ -11,97 +11,84 @@ import {
 import pageStatus from "../../utils/pageStatusEnum";
 import Loading from "../../components/Loading/Loading";
 import GenericErrorBanner from "../../components/Banner/GenericErrorBanner";
+import EventCard from "../../components/EventCard/EventCard";
 
-const UserStats = (userData, isHovered, setIsHovered) => {
+const UserStats = (userData) => {
   const gamesPlayed = 40;
   const maxGames = 100;
   const tournamentsPlayed = 5;
   const maxTournaments = 10;
 
   return (
-    <Grid
-      container
-      justifyContent="center"
-      alignItems="center"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+    <Grid container justifyContent="center" alignItems="center">
       <Grid item>
-        <Typography variant="h5" color="inherit" paragraph>
-          <Grid container alignItems="center">
-            <Grid item>
-              <CircularProgress
-                variant="determinate"
-                value={((userData?.sports?.length || 0) / 30) * 100}
-                size={60}
-                thickness={6}
-                style={{ visibility: isHovered ? "hidden" : "visible" }}
-              />
-              <span
-                style={{
-                  fontSize: "2rem",
-                  marginRight: "8px",
-                  visibility: isHovered ? "visible" : "hidden",
-                }}
-              >
-                {userData?.sports?.length || 0}
-              </span>
-            </Grid>
-            <Grid item>Sports</Grid>
+        <Grid container alignItems="center">
+          <Grid
+            container
+            justify="center"
+            alignItems="center"
+            style={{ width: 60, height: 60 }}
+          >
+            <CircularProgress
+              variant="determinate"
+              value={((userData?.sports?.length || 0) / 30) * 100}
+              size={40}
+              thickness={6}
+            />
           </Grid>
-        </Typography>
+          <Grid item>
+            {" "}
+            <Typography variant="h5" color="inherit">
+              Sports
+            </Typography>
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item>
+        <Grid container alignItems="center">
+          <Grid
+            container
+            justify="center"
+            alignItems="center"
+            style={{ width: 60, height: 60 }}
+          >
+            <CircularProgress
+              variant="determinate"
+              value={(gamesPlayed / maxGames) * 100}
+              size={40}
+              thickness={6}
+            />
+          </Grid>
+          <Grid item>
+            {" "}
+            <Typography variant="h5" color="inherit">
+              Games
+            </Typography>
+          </Grid>
+        </Grid>
       </Grid>
 
       <Grid item>
-        <Typography variant="h5" color="inherit" paragraph>
-          <Grid container alignItems="center">
-            <Grid item>
-              <CircularProgress
-                variant="determinate"
-                value={(gamesPlayed / maxGames) * 100}
-                size={60}
-                thickness={6}
-                style={{ visibility: isHovered ? "hidden" : "visible" }}
-              />
-              <span
-                style={{
-                  fontSize: "2rem",
-                  margin: "0 8px",
-                  visibility: isHovered ? "visible" : "hidden",
-                }}
-              >
-                {gamesPlayed}
-              </span>
-            </Grid>
-            <Grid item>Games</Grid>
+        <Grid container alignItems="center">
+          <Grid
+            container
+            justify="center"
+            alignItems="center"
+            style={{ width: 60, height: 60 }}
+          >
+            <CircularProgress
+              variant="determinate"
+              value={(tournamentsPlayed / maxTournaments) * 100}
+              size={40}
+              thickness={6}
+            />
           </Grid>
-        </Typography>
-      </Grid>
-
-      <Grid item>
-        <Typography variant="h5" color="inherit" paragraph>
-          <Grid container alignItems="center">
-            <Grid item>
-              <CircularProgress
-                variant="determinate"
-                value={(tournamentsPlayed / maxTournaments) * 100}
-                size={60}
-                thickness={6}
-                style={{ visibility: isHovered ? "hidden" : "visible" }}
-              />
-              <span
-                style={{
-                  fontSize: "2rem",
-                  marginLeft: "8px",
-                  visibility: isHovered ? "visible" : "hidden",
-                }}
-              >
-                {tournamentsPlayed}
-              </span>
-            </Grid>
-            <Grid item>Tournaments</Grid>
+          <Grid item>
+            <Typography variant="h5" color="inherit">
+              Tournaments
+            </Typography>
           </Grid>
-        </Typography>
+        </Grid>
       </Grid>
     </Grid>
   );
@@ -111,7 +98,6 @@ function UserProfile() {
   const { userId } = useParams();
   const [userData, setUserData] = useState();
   const [status, setStatus] = useState(pageStatus.LOADING);
-  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -200,18 +186,34 @@ function UserProfile() {
         </Grid>
       </Paper>
 
-      {UserStats(userData, isHovered, setIsHovered)}
+      {UserStats(userData)}
 
       {userData.biography && (
-        <Grid style={{ marginLeft: "4rem", marginRight: "4rem" }}>
-          <Typography variant="h6" color="primary">
-            {`About ${userData.firstName}`}
-          </Typography>
-          <Typography variant="body1" color="textSecondary" paragraph>
-            {userData.biography}
-          </Typography>
+        <Grid style={{ maxWidth: "600px", margin: "0 auto" }}>
+          <Grid>
+            <Typography variant="h6" color="primary">
+              {`About ${userData.firstName}`}
+            </Typography>
+            <Typography variant="body1" color="textSecondary" paragraph>
+              {userData.biography}
+            </Typography>
+          </Grid>
         </Grid>
       )}
+      <Grid style={{ maxWidth: "600px", margin: "0 auto" }}>
+        <Typography variant="h6" color="primary">
+          {`${userData.firstName}'s recent events`}
+        </Typography>
+        <Grid sx={{ paddingTop: "1rem" }}>
+          <EventCard style={{ marginTop: "1rem" }} />
+        </Grid>
+        <Grid sx={{ paddingTop: "1rem" }}>
+          <EventCard style={{ marginTop: "1rem" }} />
+        </Grid>
+        <Grid sx={{ paddingTop: "1rem" }}>
+          <EventCard style={{ marginTop: "1rem" }} />
+        </Grid>
+      </Grid>
     </>
   );
 }
