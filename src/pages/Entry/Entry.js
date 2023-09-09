@@ -75,6 +75,7 @@ export default function EntryPage() {
           minHeight: "600px",
           alignItems: "center",
           marginLeft: "7rem",
+          paddingTop: "2rem",
         }}
       >
         <Grid
@@ -106,6 +107,7 @@ export default function EntryPage() {
               variant={isHovered ? "contained" : "outlined"}
               onMouseOver={() => setIsHovered(true)}
               onMouseOut={() => setIsHovered(false)}
+              href="/auth"
             >
               Join Now
             </Button>
@@ -170,22 +172,6 @@ export default function EntryPage() {
           Upcoming PickUp Games
         </Typography>
         <UpcomingGames></UpcomingGames>
-        <EventCard />
-        <ImageList
-          sx={{
-            gridAutoFlow: "column",
-            gridTemplateColumns:
-              "repeat(auto-fill,minmax(600px,1fr)) !important",
-            gridAutoColumns: "minmax(600px, 1fr)",
-          }}
-        >
-          {cards2.map((image) => (
-            <ImageListItem>
-              <img src="https://source.unsplash.com/random?wallpapers" alt="" />
-              <ImageListItemBar title={image.title} />
-            </ImageListItem>
-          ))}
-        </ImageList>
       </main>
       {/* Footer */}
       <Footer></Footer>
