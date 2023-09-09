@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
-import {ImageList, ImageListItem, ImageListItemBar} from "@mui/material";
+import { ImageList, ImageListItem, ImageListItemBar } from "@mui/material";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -13,8 +13,9 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Navbar from "../../Components/Navbar";
-import Footer from "../../Components/Footer";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
+import { Margin } from "@mui/icons-material";
 
 function Copyright() {
   return (
@@ -34,23 +35,22 @@ const cards = [
     id: 1,
     title: "",
     description: "",
-    imageUrl: "https://source.unsplash.com/random?card1",
+    imageUrl: process.env.PUBLIC_URL + "/SportsPhotos/Photo2.png",
     action: "Meet New People",
   },
   {
     id: 2,
     title: "",
     description: "",
-    imageUrl: "https://source.unsplash.com/random?card2",
+    imageUrl: process.env.PUBLIC_URL + "/SportsPhotos/Photo3.jpeg",
     action: "Stay Active",
   },
   {
     id: 3,
     title: "",
-    description:
-      "",
-    imageUrl: "https://source.unsplash.com/random?card3",
-    action: "Explore",
+    description: "",
+    imageUrl: process.env.PUBLIC_URL + "/SportsPhotos/Photo4.webp",
+    action: "Try a new sport",
   },
 ];
 
@@ -65,30 +65,31 @@ export default function EntryPage() {
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
       <Navbar />
-      <main>
-        {/* Headers */}
-        <Box
+      <Box
+        sx={{
+          maxWidth: "100%",
+          display: "flex",
+          minHeight: "600px",
+          alignItems: "center",
+          marginLeft: "7rem",
+        }}
+      >
+        <Grid
+          container
+          spacing={6}
           sx={{
-            bgcolor: "background.paper",
-            pt: 8,
-            pb: 6,
+            alignItems: "center",
+            maxWidth: "100%",
+            paddingTop: "2rem",
           }}
         >
-          <Container maxWidth="sm">
-            <Typography
-              component="h1"
-              variant="h2"
-              align="center"
-              color="text.primary"
-              gutterBottom
-            >
+          <Grid item xs={12} md={4}>
+            <Typography variant="h3" sx={{ paddingBottom: "15px" }}>
               PickUp
             </Typography>
             <Typography
-              variant="h5"
-              align="center"
-              color="text.secondary"
-              paragraph
+              variant="h6"
+              sx={{ opacity: "0.4", paddingBottom: "30px" }}
             >
               Welcome to Pickup, your ultimate destination for connecting with
               local sports enthusiasts! Discover and join pickup games happening
@@ -96,63 +97,68 @@ export default function EntryPage() {
               just looking to have some fun, Pickup has you covered. Don't miss
               out on the action – join the game today!
             </Typography>
-            <Stack
-              sx={{ pt: 4 }}
-              direction="row"
-              spacing={2}
-              justifyContent="center"
+            <Button
+              color="primary"
+              sx={{ width: "200px", fontSize: "16px" }}
+              variant={isHovered ? "contained" : "outlined"}
+              onMouseOver={() => setIsHovered(true)}
+              onMouseOut={() => setIsHovered(false)}
             >
-              <Link href="/auth">
-                <Button
-                  variant={isHovered ? "contained" : "outlined"}
-                  onMouseOver={() => setIsHovered(true)}
-                  onMouseOut={() => setIsHovered(false)}
-                >
-                  Join Now
-                </Button>
-              </Link>
-            </Stack>
-          </Container>
-        </Box>
+              Join Now
+            </Button>
+          </Grid>
+          <Grid item xs={12} md={8}>
+            <img
+              src={process.env.PUBLIC_URL + "/SportsPhotos/Photo1.jpeg"}
+              alt="My Team"
+              sx={{
+                width: "100%",
+              }}
+            />
+          </Grid>
+        </Grid>
+      </Box>
+      <main>
+        {/* Headers */}
 
         {/* How Does Pick Up Work*/}
-        <Container sx={{ py: 8 }} maxWidth="md">
-          {/* Add a wrapper div for horizontal scrolling */}
-            {/* Card Sections */}
-            <Grid container spacing={4}>
-              {cards.map((card) => (
-                <Grid item key={card} xs={12} sm={6} md={4}>
-                  <Card
+        <Container sx={{ py: 25 }} maxWidth="xl">
+          {/* Card Sections */}
+          <Grid container spacing={8}>
+            {cards.map((card) => (
+              <Grid item key={card} xs={12} sm={6} md={4}>
+                <Card
+                  variant = 'plain'
+                  sx={{
+                    height: "100%",
+                    flexDirection: "column"
+                  }}
+                >
+                  <CardMedia
+                    component="div"
                     sx={{
-                      height: "100%",
-                      flexDirection: "column",
+                     height: '15rem',
+                     borderRadius: '10px',
                     }}
-                  >
-                    <CardMedia
-                      component="div"
-                      sx={{
-                        // 16:9
-                        pt: "56.25%",
-                      }}
-                      image="https://source.unsplash.com/random?wallpapers"
-                    />
-                    <CardContent sx={{ flexGrow: 1 }}>
-                      <Typography gutterBottom variant="h5" component="h2">
-                        {card.title}
-                      </Typography>
-                      <Typography>{card.description}</Typography>
-                    </CardContent>
-                    <CardActions>
-                      <Button variant="outlined">{card.action}</Button>
-                    </CardActions>
-                  </Card>
-                </Grid>
-              ))}
-            </Grid>
+                    image={card.imageUrl}
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      {card.title}
+                    </Typography>
+                    <Typography>{card.description}</Typography>
+                  </CardContent>
+                  <CardActions sx={{height: '10px'}}>
+                    {card.action}
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
         </Container>
 
         {/* FIND NEW FRIENDS, STAY ACTIVE */}
-        <Container sx={{ py: 8 }} maxWidth="md">
+        <Container sx={{ py: 4 }} maxWidth="md">
           {/* Card Sections*/}
           <Grid container spacing={4}>
             {cards2.map((card) => (
@@ -241,7 +247,7 @@ export default function EntryPage() {
         >
           {cards2.map((image) => (
             <ImageListItem>
-              <img src='https://source.unsplash.com/random?wallpapers' alt='' />
+              <img src="https://source.unsplash.com/random?wallpapers" alt="" />
               <ImageListItemBar title={image.title} />
             </ImageListItem>
           ))}
@@ -252,3 +258,4 @@ export default function EntryPage() {
       {/* End footer */}
     </ThemeProvider>
   );
+}
