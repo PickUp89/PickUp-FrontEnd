@@ -35,7 +35,7 @@ export default function Footer() {
               Contact Us
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              1University of Waterloo, MC, University Avenue West, Waterloo, ON
+              University of Waterloo, MC, University Avenue West, Waterloo, ON
             </Typography>
             <Typography variant="body2" color="text.secondary">
               Email: PickUp@gmail.com

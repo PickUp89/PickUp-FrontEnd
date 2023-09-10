@@ -9,6 +9,8 @@ import BookmarkAdd from "@mui/icons-material/BookmarkAddOutlined";
 import formatISODateToCustomString from "../../utils/formatISODateToCustomString";
 import testImage from "./testImage";
 
+
+
 export default function EventCard() {
   const eventInfo = {
     name: "Soccer Pick Up",

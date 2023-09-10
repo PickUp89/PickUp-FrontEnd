@@ -76,6 +76,7 @@ export default function EntryPage() {
           alignItems: "center",
           marginLeft: "7rem",
           paddingTop: "2rem",
+          overflowX: "hidden",
         }}
       >
         <Grid
@@ -172,6 +173,7 @@ export default function EntryPage() {
           Upcoming PickUp Games
         </Typography>
         <UpcomingGames></UpcomingGames>
+
       </main>
       {/* Footer */}
       <Footer></Footer>
