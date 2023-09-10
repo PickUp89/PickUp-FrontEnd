@@ -25,8 +25,9 @@ export default function Footer() {
               About Us
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              We are XYZ company, dedicated to providing the best service to our
-              customers.
+              Pickup is your sports community hub, connecting players for casual
+              games and sports-related activities. Join us to find and
+              participate in local pickup games and events today!
             </Typography>
           </Grid>
           <Grid item xs={12} sm={4}>
@@ -34,13 +35,10 @@ export default function Footer() {
               Contact Us
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              123 Main Street, Anytown, USA
+              1University of Waterloo, MC, University Avenue West, Waterloo, ON
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Email: info@example.com
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Phone: +1 234 567 8901
+              Email: PickUp@gmail.com
             </Typography>
           </Grid>
           <Grid item xs={12} sm={4}>
@@ -66,7 +64,7 @@ export default function Footer() {
           <Typography variant="body2" color="text.secondary" align="center">
             {"Copyright © "}
             <Link color="inherit" href="https://your-website.com/">
-              Your Website
+              PickUp
             </Link>{" "}
             {new Date().getFullYear()}
             {"."}

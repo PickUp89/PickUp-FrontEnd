@@ -7,7 +7,6 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Drawer from "@mui/material/Drawer";
 import MenuItem from "@mui/material/MenuItem";
-import { CssBaseline } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 
@@ -148,7 +147,7 @@ export default function Navbar() {
 
   return (
     <header>
-      <AppBar sx={{backgroundColor: "#400CCC",
+      <AppBar sx={{backgroundColor: "#7550af",
     paddingRight: "79px",
     paddingLeft: "118px",}}>
         {mobileView ? displayMobile() : displayDesktop()}
