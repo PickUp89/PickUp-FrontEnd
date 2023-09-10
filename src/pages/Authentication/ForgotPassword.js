@@ -93,7 +93,7 @@ export default function ForgotPassword() {
             <Grid item xs={12} sm={12} lg={6}>
               <Box
                 style={{
-                    backgroundImage: `url(${process.env.PUBLIC_URL}/LoginPage/spikeball.jpg)`,
+                  backgroundImage: `url(${process.env.PUBLIC_URL}/LoginPage/spikeball.jpg)`,
                   backgroundSize: "cover",
                   marginTop: "40px",
                   marginLeft: "15px",
