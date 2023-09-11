@@ -169,6 +169,7 @@ export default function EntryPage() {
         </Typography>
         <HowItWorks></HowItWorks>
 
+               
         <Typography variant="h5" align="center" marginBottom={5}>
           Upcoming PickUp Games
         </Typography>
