@@ -37,18 +37,23 @@ const cards = [
 
 export default function UpcomingGames() {
   return (
-    <div style={{ width: "100%", overflow: "auto", display: "flex",}}>
-      {map(range(10), (_) => (
-        <Container />
-      ))}
-    </div>
+    <>
+      <Typography variant="h2" align="center" marginBottom={5} marginTop={5}>
+        Upcoming PickUp Games
+      </Typography>
+      <div style={{ width: "100%", overflow: "auto", display: "flex" }}>
+        {map(range(6), (_) => (
+          <Container />
+        ))}
+      </div>
+    </>
   );
 }
 
 const Container = () => {
   return (
-    <div style={{ height: "13rem", width: "25rem", margin: "1rem" }}>
-      <Paper style={{ height: "100%", width: "20rem" }}>Hello</Paper>
+    <div style={{ height: "30rem", width: "40rem", margin: "2rem" }}>
+      <EventCard />
     </div>
   );
 };

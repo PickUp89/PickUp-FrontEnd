@@ -1,8 +1,8 @@
-import MenuIcon from '@mui/icons-material/Menu';
+import MenuIcon from "@mui/icons-material/Menu";
 import React, { useState, useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar'
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Drawer from "@mui/material/Drawer";
@@ -19,20 +19,17 @@ const headersData = [
     label: "Log In",
     href: "/auth",
   },
-  {
-    label: "My Account",
-    href: "/account",
-  },
-  {
-    label: "Log Out",
-    href: "/logout",
-  },
+  // {
+  //   label: "My Account",
+  //   href: "/account",
+  // },
+  // {
+  //   label: "Log Out",
+  //   href: "/logout",
+  // },
 ];
 
-
-
 export default function Navbar() {
-
   const [state, setState] = useState({
     mobileView: false,
     drawerOpen: false,
@@ -58,8 +55,7 @@ export default function Navbar() {
 
   const displayDesktop = () => {
     return (
-      <Toolbar sx={{display: "flex",
-      justifyContent: "space-between",}}>
+      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         {PickUpLogo}
         <div>{getMenuButtons()}</div>
       </Toolbar>
@@ -93,7 +89,7 @@ export default function Navbar() {
             onClose: handleDrawerClose,
           }}
         >
-          <div sx={{padding: "20px 30px",}}>{getDrawerChoices()}</div>
+          <div sx={{ padding: "20px 30px" }}>{getDrawerChoices()}</div>
         </Drawer>
 
         <div>{PickUpLogo}</div>
@@ -120,10 +116,17 @@ export default function Navbar() {
   };
 
   const PickUpLogo = (
-    <Typography variant="h6" component="h1" sx={{fontFamily: "Work Sans, sans-serif",
-    fontWeight: 600,
-    color: "#FFFEFE",
-    textAlign: "left",}}>
+    // <img src={process.env.PUBLIC_URL + "/Logos/Logo1.png"} alt="logo" />
+    <Typography
+      variant="h6"
+      component="h1"
+      sx={{
+        fontFamily: "Work Sans, sans-serif",
+        fontWeight: 600,
+        color: "#FFFEFE",
+        textAlign: "left",
+      }}
+    >
       PickUp
     </Typography>
   );
@@ -147,9 +150,13 @@ export default function Navbar() {
 
   return (
     <header>
-      <AppBar sx={{backgroundColor: "#7550af",
-    paddingRight: "79px",
-    paddingLeft: "118px",}}>
+      <AppBar
+        sx={{
+          backgroundColor: "#7550af",
+          paddingRight: "79px",
+          paddingLeft: "118px",
+        }}
+      >
         {mobileView ? displayMobile() : displayDesktop()}
       </AppBar>
     </header>

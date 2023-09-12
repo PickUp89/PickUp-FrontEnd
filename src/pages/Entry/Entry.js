@@ -19,6 +19,7 @@ import { Margin } from "@mui/icons-material";
 import HowItWorks from "../../components/HowItWorks/HowItWorks";
 import UpcomingGames from "../../components/UpcomingGames/UpcomingGames";
 import EventCard from "../../components/EventCard/EventCard";
+import CardActionArea from "@mui/material/CardActionArea";
 
 function Copyright() {
   return (
@@ -40,6 +41,7 @@ const cards = [
     description: "",
     imageUrl: process.env.PUBLIC_URL + "/SportsPhotos/Photo2.png",
     action: "Meet New People",
+    link: "/auth"
   },
   {
     id: 2,
@@ -47,6 +49,7 @@ const cards = [
     description: "",
     imageUrl: process.env.PUBLIC_URL + "/SportsPhotos/Photo3.jpeg",
     action: "Stay Active",
+    link: "/auth"
   },
   {
     id: 3,
@@ -54,18 +57,20 @@ const cards = [
     description: "",
     imageUrl: process.env.PUBLIC_URL + "/SportsPhotos/Photo4.webp",
     action: "Try a new sport",
+    link: "/auth",
   },
 ];
 
 const cards2 = [1, 2, 3, 4, 5];
 
 // TODO remove, this demo shouldn't need to reset the theme.
-const defaultTheme = createTheme();
+// const defaultTheme = createTheme();
 
 export default function EntryPage() {
   const [isHovered, setIsHovered] = useState({});
   return (
-    <ThemeProvider theme={defaultTheme}>
+    // <ThemeProvider>
+    <>
       <CssBaseline />
       <Navbar />
       <Box
@@ -140,23 +145,25 @@ export default function EntryPage() {
                     flexDirection: "column",
                   }}
                 >
-                  <CardMedia
-                    component="div"
-                    sx={{
-                      height: "15rem",
-                      borderRadius: "10px",
-                    }}
-                    image={card.imageUrl}
-                  />
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {card.title}
-                    </Typography>
-                    <Typography>{card.description}</Typography>
-                  </CardContent>
-                  <CardActions sx={{ height: "10px" }}>
-                    {card.action}
-                  </CardActions>
+                <CardActionArea href="/auth">
+                   <CardMedia
+                      component="div"
+                      sx={{
+                        height: "15rem",
+                        borderRadius: "10px",
+                      }}
+                      image={card.imageUrl}
+                    />
+                    <CardContent sx={{ flexGrow: 1 }}>
+                      <Typography gutterBottom variant="h5" component="h2">
+                          <Link href={card.link}>{card.title}</Link>
+                      </Typography>
+                      <Typography>{card.description}</Typography>
+                    </CardContent>
+                    <CardActions sx={{ height: "10px" }}>
+                      {card.action}
+                    </CardActions>
+                  </CardActionArea>
                 </Card>
               </Grid>
             ))}
@@ -164,21 +171,16 @@ export default function EntryPage() {
         </Container>
 
         {/* How PickUp works*/}
-        <Typography variant="h2" align="center">
+        <Typography variant="h2" align="center" marginTop={4}>
           How PickUp Works
         </Typography>
-        <HowItWorks></HowItWorks>
+        <HowItWorks />
 
-               
-        <Typography variant="h5" align="center" marginBottom={5}>
-          Upcoming PickUp Games
-        </Typography>
-        <UpcomingGames></UpcomingGames>
-
+        <UpcomingGames />
       </main>
       {/* Footer */}
       <Footer></Footer>
       {/* End footer */}
-    </ThemeProvider>
+    </>
   );
 }
