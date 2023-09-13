@@ -12,7 +12,7 @@ export default function UpcomingGames() {
       </Typography>
       <div style={{ width: "100%", overflow: "auto", display: "flex" }}>
         {map(range(6), (_) => (
-          <Container />
+          <Container key={_} />
         ))}
       </div>
     </>
