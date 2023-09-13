@@ -101,6 +101,7 @@ export default function Navbar() {
     return headersData.map(({ label, href }) => {
       return (
         <Link
+          key={label}
           {...{
             component: RouterLink,
             to: href,
@@ -135,6 +136,7 @@ export default function Navbar() {
     return headersData.map(({ label, href }) => {
       return (
         <Button
+          key={`button${label}`}
           {...{
             key: label,
             color: "inherit",
