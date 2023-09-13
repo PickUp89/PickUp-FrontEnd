@@ -15,6 +15,7 @@ import Footer from "../../components/Footer";
 import HowItWorks from "../../components/HowItWorks/HowItWorks";
 import UpcomingGames from "../../components/UpcomingGames/UpcomingGames";
 import CardActionArea from "@mui/material/CardActionArea";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 // function Copyright() {
 //   return (
@@ -85,17 +86,17 @@ export default function EntryPage() {
         >
           <Grid item xs={12} md={4}>
             <Typography variant="h3" sx={{ paddingBottom: "15px" }}>
-              PickUp
+              Welcome to <span style={{ fontWeight: "bold" }}>PickUp</span>!
             </Typography>
             <Typography
               variant="h6"
-              sx={{ opacity: "0.4", paddingBottom: "30px" }}
+              sx={{ opacity: "0.7", paddingBottom: "30px" }}
             >
-              Welcome to Pickup, your ultimate destination for connecting with
-              local sports enthusiasts! Discover and join pickup games happening
-              right in your neighborhood. Whether you're a seasoned athlete or
-              just looking to have some fun, Pickup has you covered. Don't miss
-              out on the action – join the game today!
+              Your ultimate destination for connecting with local sports
+              enthusiasts! Discover and join pickup games happening right in
+              your neighborhood. Whether you're a seasoned athlete or just
+              looking to have some fun, Pickup has you covered. Don't miss out
+              on the action – join the game today!
             </Typography>
             <Button
               color="primary"
@@ -133,9 +134,22 @@ export default function EntryPage() {
                   sx={{
                     height: "100%",
                     flexDirection: "column",
+                    backgroundColor: 'transparent"',
+                    "&:hover": {
+                      boxShadow: "none",
+                      backgroundColor: "transparent",
+                    },
                   }}
                 >
-                  <CardActionArea href="/auth">
+                  <CardActionArea
+                    sx={{
+                      backgroundColor: 'transparent"',
+                      "&:hover": {
+                        boxShadow: "none",
+                        backgroundColor: "transparent",
+                      },
+                    }}
+                  >
                     <CardMedia
                       component="div"
                       sx={{
@@ -151,7 +165,14 @@ export default function EntryPage() {
                       <Typography>{card.description}</Typography>
                     </CardContent>
                     <CardActions sx={{ height: "10px" }}>
-                      {card.action}
+                      <Link href={card.link}>
+                        <Box display="flex" alignItems="center" gap={1}>
+                          <Typography gutterBottom variant="h6">
+                            {card.action}
+                          </Typography>
+                          <ArrowForwardIcon sx={{ marginBottom: "7px" }} />
+                        </Box>
+                      </Link>
                     </CardActions>
                   </CardActionArea>
                 </Card>
