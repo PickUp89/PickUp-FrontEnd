@@ -2,11 +2,10 @@ import * as React from "react";
 
 import { loginWithEmailAsync } from "../../thunks/authThunks";
 import { useDispatch, useSelector } from "react-redux";
-
+import GenericErrorBanner from "../../components/Banner/GenericErrorBanner";
 import {
   Avatar,
   Button,
-  Alert,
   CssBaseline,
   TextField,
   FormControlLabel,
@@ -15,7 +14,6 @@ import {
   Grid,
   Box,
   Typography,
-  Container,
   Paper,
   createTheme,
   ThemeProvider,
@@ -72,6 +70,7 @@ export default function SignIn({ toggleAuthMode }) {
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
+            {apiError && <GenericErrorBanner />}
             {/* <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
             <TextField
               margin="normal"
