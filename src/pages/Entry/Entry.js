@@ -128,7 +128,7 @@ export default function EntryPage() {
           {/* Card Sections */}
           <Grid container spacing={8}>
             {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
+              <Grid item key={`benefit-card-${card.id}`} xs={12} sm={6} md={4}>
                 <Card
                   variant="plain"
                   sx={{
