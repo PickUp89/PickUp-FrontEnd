@@ -2,37 +2,32 @@ import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
-import { ImageList, ImageListItem, ImageListItemBar } from "@mui/material";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
-import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import { Margin } from "@mui/icons-material";
 import HowItWorks from "../../components/HowItWorks/HowItWorks";
 import UpcomingGames from "../../components/UpcomingGames/UpcomingGames";
-import EventCard from "../../components/EventCard/EventCard";
 import CardActionArea from "@mui/material/CardActionArea";
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
+// function Copyright() {
+//   return (
+//     <Typography variant="body2" color="text.secondary" align="center">
+//       {"Copyright © "}
+//       <Link color="inherit" href="https://mui.com/">
+//         Your Website
+//       </Link>{" "}
+//       {new Date().getFullYear()}
+//       {"."}
+//     </Typography>
+//   );
+// }
 
 const cards = [
   {
@@ -41,7 +36,7 @@ const cards = [
     description: "",
     imageUrl: process.env.PUBLIC_URL + "/SportsPhotos/Photo2.png",
     action: "Meet New People",
-    link: "/auth"
+    link: "/auth",
   },
   {
     id: 2,
@@ -49,7 +44,7 @@ const cards = [
     description: "",
     imageUrl: process.env.PUBLIC_URL + "/SportsPhotos/Photo3.jpeg",
     action: "Stay Active",
-    link: "/auth"
+    link: "/auth",
   },
   {
     id: 3,
@@ -60,11 +55,6 @@ const cards = [
     link: "/auth",
   },
 ];
-
-const cards2 = [1, 2, 3, 4, 5];
-
-// TODO remove, this demo shouldn't need to reset the theme.
-// const defaultTheme = createTheme();
 
 export default function EntryPage() {
   const [isHovered, setIsHovered] = useState({});
@@ -145,8 +135,8 @@ export default function EntryPage() {
                     flexDirection: "column",
                   }}
                 >
-                <CardActionArea href="/auth">
-                   <CardMedia
+                  <CardActionArea href="/auth">
+                    <CardMedia
                       component="div"
                       sx={{
                         height: "15rem",
@@ -156,7 +146,7 @@ export default function EntryPage() {
                     />
                     <CardContent sx={{ flexGrow: 1 }}>
                       <Typography gutterBottom variant="h5" component="h2">
-                          <Link href={card.link}>{card.title}</Link>
+                        <Link href={card.link}>{card.title}</Link>
                       </Typography>
                       <Typography>{card.description}</Typography>
                     </CardContent>
