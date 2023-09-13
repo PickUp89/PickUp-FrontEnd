@@ -35,7 +35,7 @@ const cards = [
     id: 1,
     title: "",
     description: "",
-    imageUrl: process.env.PUBLIC_URL + "/SportsPhotos/Photo2.png",
+    imageUrl: `${process.env.PUBLIC_URL}/SportsPhotos/photo2.jpg)`,
     action: "Meet New People",
     link: "/auth",
   },
@@ -43,7 +43,7 @@ const cards = [
     id: 2,
     title: "",
     description: "",
-    imageUrl: process.env.PUBLIC_URL + "/SportsPhotos/Photo3.jpeg",
+    imageUrl: process.env.PUBLIC_URL + "/SportsPhotos/photo3.jpeg",
     action: "Stay Active",
     link: "/auth",
   },
@@ -51,7 +51,7 @@ const cards = [
     id: 3,
     title: "",
     description: "",
-    imageUrl: process.env.PUBLIC_URL + "/SportsPhotos/Photo4.webp",
+    imageUrl: process.env.PUBLIC_URL + "/SportsPhotos/photo4.webp",
     action: "Try a new sport",
     link: "/auth",
   },
@@ -111,7 +111,7 @@ export default function EntryPage() {
           </Grid>
           <Grid item xs={12} md={8}>
             <img
-              src={process.env.PUBLIC_URL + "/SportsPhotos/Photo1.jpeg"}
+              src={process.env.PUBLIC_URL + "/SportsPhotos/photo1.jpeg"}
               alt="My Team"
               sx={{
                 width: "100%",
