@@ -11,7 +11,6 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
 import Navbar from "../../components/Navbar/Navbar";
-import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import HowItWorks from "../../components/HowItWorks/HowItWorks";
 import UpcomingGames from "../../components/UpcomingGames/UpcomingGames";
