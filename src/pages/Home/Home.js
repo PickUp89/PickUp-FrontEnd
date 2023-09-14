@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import EventCard from "../../components/EventCard/EventCard";
 import { useParams } from "react-router-dom";
 
 const Home = () => {
@@ -25,7 +26,6 @@ const Home = () => {
     fetchUserData();
     console.log(userData);
   });
-  return <div>Home</div>;
 };
 
 export default Home;

@@ -9,6 +9,8 @@ import BookmarkAdd from "@mui/icons-material/BookmarkAddOutlined";
 import formatISODateToCustomString from "../../utils/formatISODateToCustomString";
 import testImage from "./testImage";
 
+
+
 export default function EventCard() {
   const eventInfo = {
     name: "Soccer Pick Up",
@@ -19,6 +21,7 @@ export default function EventCard() {
     coverImage: testImage,
     level: "Advanced",
   };
+  
   const { name, date, attendees, location, coverImage, level } = eventInfo;
   return (
     <Card sx={{ width: 500, backgroundColor: "white" }}>

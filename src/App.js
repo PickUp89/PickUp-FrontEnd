@@ -9,6 +9,7 @@ import Authentication from "./pages/Authentication/Authentication";
 import Home from "./pages/Home/Home";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import { useSelector } from "react-redux";
+import EntryPage from "./pages/Entry/Entry";
 
 const App = () => {
   const state = useSelector((state) => state);
@@ -22,13 +23,14 @@ const App = () => {
             <Route path="/home" element={<Home />} />
             <Route path="/user/:userId" element={<UserProfile />} />
             <Route path="/auth" element={<Navigate to="/home" />} />
+            <Route path="/" element={<EntryPage />} />
           </>
         ) : (
           <>
             <Route path="/home" element={<Home />} />
             <Route path="/auth" element={<Authentication />} />
-            <Route path="/user/:userId" element={<UserProfile />} />
-            <Route path="*" element={<Navigate to="/auth" />} />
+            <Route path="/" element={<EntryPage />} />
+            <Route path="*" element={<Navigate to="/" />} />
           </>
         )}
       </Routes>

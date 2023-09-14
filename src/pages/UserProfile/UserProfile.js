@@ -9,7 +9,7 @@ import {
   CircularProgress,
 } from "@mui/material";
 import pageStatus from "../../utils/pageStatusEnum";
-import Loading from "../../components/Loading/Loading";
+import Loading from "../../components/Loading/Loading"; 
 import GenericErrorBanner from "../../components/Banner/GenericErrorBanner";
 import EventCard from "../../components/EventCard/EventCard";
 

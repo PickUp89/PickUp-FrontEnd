@@ -2,11 +2,10 @@ import * as React from "react";
 
 import { loginWithEmailAsync } from "../../thunks/authThunks";
 import { useDispatch, useSelector } from "react-redux";
-
+import GenericErrorBanner from "../../components/Banner/GenericErrorBanner";
 import {
   Avatar,
   Button,
-  Alert,
   CssBaseline,
   TextField,
   FormControlLabel,
@@ -15,7 +14,6 @@ import {
   Grid,
   Box,
   Typography,
-  Container,
   Paper,
   createTheme,
   ThemeProvider,
@@ -76,6 +74,54 @@ export default function SignIn({ toggleAuthMode }) {
             <Typography component="h1" variant="subtitle2">
               Please sign-in to your account to join our community.
             </Typography>
+            {apiError && <GenericErrorBanner />}
+            {/* <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+            />
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Sign In
+            </Button>
+            <Grid container>
+              <Grid item xs>
+                <Link href="#" variant="body2">
+                  Forgot password?
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link href="#" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
+            </Grid>
+            <Copyright sx={{ mt: 5 }} />
+          </Box> */}
             <Box
               component="form"
               onSubmit={handleSubmit}
