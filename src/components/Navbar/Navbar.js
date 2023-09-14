@@ -9,8 +9,6 @@ import Drawer from "@mui/material/Drawer";
 import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 
 const headersData = [
   {
@@ -21,18 +19,14 @@ const headersData = [
     label: "Log In",
     href: "/auth",
   },
-];
-
-const authenticatedHeadersData = [
-  {
-    label: "My Profile",
-    href: "/auth",
-    icon: <PersonOutlineIcon />,
-  },
-  {
-    label: "Log Out",
-    href: "",
-  },
+  // {
+  //   label: "My Account",
+  //   href: "/account",
+  // },
+  // {
+  //   label: "Log Out",
+  //   href: "/logout",
+  // },
 ];
 
 export default function Navbar() {
@@ -42,8 +36,6 @@ export default function Navbar() {
   });
 
   const { mobileView, drawerOpen } = state;
-
-  const isAuthenticated = useSelector((state) => state?.user?.isAuthenticated);
 
   useEffect(() => {
     const setResponsiveness = () => {
@@ -106,8 +98,7 @@ export default function Navbar() {
   };
 
   const getDrawerChoices = () => {
-    const data = isAuthenticated ? authenticatedHeadersData : headersData;
-    return data.map(({ label, href }) => {
+    return headersData.map(({ label, href }) => {
       return (
         <Link
           key={label}
@@ -142,8 +133,7 @@ export default function Navbar() {
   );
 
   const getMenuButtons = () => {
-    const data = isAuthenticated ? authenticatedHeadersData : headersData;
-    return data.map(({ label, href, icon }) => {
+    return headersData.map(({ label, href }) => {
       return (
         <Button
           key={`button${label}`}
@@ -154,7 +144,7 @@ export default function Navbar() {
             component: RouterLink,
           }}
         >
-          {icon ? icon : label}
+          {label}
         </Button>
       );
     });
