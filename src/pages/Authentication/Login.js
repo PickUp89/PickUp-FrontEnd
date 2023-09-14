@@ -17,8 +17,13 @@ import {
   Paper,
   createTheme,
   ThemeProvider,
+  Divider,
+  IconButton,
 } from "@mui/material";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import FacebookIcon from "@mui/icons-material/Facebook"; // Import Facebook icon
+import GoogleIcon from "@mui/icons-material/Google";
+import MicrosoftIcon from "@mui/icons-material/Microsoft"; // Import Microsoft icon
+import TwitterIcon from "@mui/icons-material/Twitter";
 
 const defaultTheme = createTheme();
 
@@ -61,14 +66,13 @@ export default function SignIn({ toggleAuthMode }) {
               mx: 4,
               display: "flex",
               flexDirection: "column",
-              alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-              <LockOutlinedIcon />
-            </Avatar>
             <Typography component="h1" variant="h5">
-              Sign in
+              Welcome to <span style={{ fontWeight: "bold" }}>Pick Up</span>!
+            </Typography>
+            <Typography component="h1" variant="subtitle2">
+              Please sign-in to your account to join our community.
             </Typography>
             {apiError && <GenericErrorBanner />}
             {/* <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
@@ -122,7 +126,7 @@ export default function SignIn({ toggleAuthMode }) {
               component="form"
               onSubmit={handleSubmit}
               noValidate
-              sx={{ mt: 1 }}
+              sx={{ mt: 2, mb: 2 }}
             >
               <TextField
                 margin="normal"
@@ -168,6 +172,74 @@ export default function SignIn({ toggleAuthMode }) {
                   </Link>
                 </Grid>
               </Grid>
+            </Box>
+
+            {/* Divider */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginTop: "2rem",
+              }}
+            >
+              <hr style={{ width: "40%", borderTop: "1px solid #ccc" }} />
+              <Typography
+                variant="body2"
+                color="textSecondary"
+                sx={{ marginX: 2, fontWeight: "bold" }}
+              >
+                OR
+              </Typography>
+              <hr style={{ width: "40%", borderTop: "1px solid #ccc" }} />
+            </div>
+
+            {/* Social Media Icons */}
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                mt: 2,
+              }}
+            >
+              {/* Google Icon */}
+              <IconButton
+                variant="outlined"
+                color="primary"
+                sx={{ marginRight: 2, alignItems: "center" }}
+                size="small"
+                onClick={() => {
+                  // window.location.href = `${process.env.REACT_APP_BACKEND_URL}/auth/google`;
+                }}
+              >
+                <GoogleIcon fontSize="medium" />
+              </IconButton>
+
+              {/* Facebook Icon */}
+              <IconButton
+                size="small"
+                variant="outlined"
+                color="primary"
+                sx={{ marginRight: 2, alignItems: "center" }}
+              >
+                <FacebookIcon fontSize="medium" />
+              </IconButton>
+
+              {/* Microsoft Icon */}
+              <IconButton
+                variant="outlined"
+                color="primary"
+                sx={{ marginRight: 2, alignItems: "center" }}
+                size="small"
+              >
+                <MicrosoftIcon fontSize="medium" />
+              </IconButton>
+
+              {/* Twitter Icon */}
+              <IconButton size="small" variant="outlined" color="primary">
+                <TwitterIcon fontSize="medium" />
+              </IconButton>
             </Box>
           </Box>
         </Grid>
