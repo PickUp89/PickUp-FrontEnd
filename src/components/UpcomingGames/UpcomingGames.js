@@ -1,7 +1,6 @@
 import React from "react";
 import map from "lodash/map";
 import range from "lodash/range";
-import Typography from "@mui/material/Typography";
 import EventCard from "../EventCard/EventCard";
 
 export default function UpcomingGames() {

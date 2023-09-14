@@ -3,11 +3,14 @@ import EventCard from "../../components/EventCard/EventCard";
 import Navbar from "../../components/Navbar/Navbar";
 import Grid from "@mui/material/Grid";
 import Pagination from "@mui/material/Pagination";
-const UserId = "";
+import EventCardFilter from "";
 
 const Home = () => {
   const itemsPerPage = 5;
   const [page, setPage] = useState(1);
+  // const [sportSelected, setSportSelected] = useState(null);
+  // const [radiusSelected, setRadiusSelected] = useState(0);
+  // const [competiveLevel, setCompetitiveLevel] = useState(null);
 
   const handleChange = (e, p) => {
     console.log(e, p);
@@ -80,6 +83,7 @@ const Home = () => {
           marginTop: "7rem",
         }}
       >
+        <EventCardFilter />
         <Grid sx={{ margin: "0 auto", maxWidth: "600px" }}>
           {itemsForCurrentPage.map((data, index) => (
             <div key={data.name} style={{ marginBottom: "6rem" }}>
