@@ -3,8 +3,7 @@ import EventCard from "../../components/EventCard/EventCard";
 import Navbar from "../../components/Navbar/Navbar";
 import Grid from "@mui/material/Grid";
 import Pagination from "@mui/material/Pagination";
-import EventCardFilter from "";
-
+import EventCardFilter from "../../components/EventCardFilter/EventCardFilter";
 const Home = () => {
   const itemsPerPage = 5;
   const [page, setPage] = useState(1);
