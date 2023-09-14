@@ -164,7 +164,7 @@ export default function SignIn({ toggleAuthMode }) {
                 sx={{ marginRight: 2, alignItems: "center" }}
                 size="small"
                 onClick={() => {
-                  window.location.href = `${process.env.REACT_APP_BACKEND_URL}/auth/google`;
+                  // window.location.href = `${process.env.REACT_APP_BACKEND_URL}/auth/google`;
                 }}
               >
                 <GoogleIcon fontSize="medium" />

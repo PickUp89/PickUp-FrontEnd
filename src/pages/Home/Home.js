@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Cookies from "js-cookie";
 
 const Home = () => {
   const { userId } = useParams();
   const [userData, setUserData] = useState(null);
-  const myCookieValue = Cookies.get("authToken");
-  console.log({ myCookieValue });
   useEffect(() => {
     const fetchUserData = async () => {
       try {
