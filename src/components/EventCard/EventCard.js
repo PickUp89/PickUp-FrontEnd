@@ -9,10 +9,8 @@ import BookmarkAdd from "@mui/icons-material/BookmarkAddOutlined";
 import formatISODateToCustomString from "../../utils/formatISODateToCustomString";
 import testImage from "./testImage";
 
-
-
-export default function EventCard() {
-  const eventInfo = {
+export default function EventCard({eventInfo, height, width}) {
+  const defaultEventInfo = {
     name: "Soccer Pick Up",
     date: "2023-08-31 17:35:10.895 -0400",
     attendees: ["user1", "user2", "user3"],
@@ -21,10 +19,11 @@ export default function EventCard() {
     coverImage: testImage,
     level: "Advanced",
   };
-  
-  const { name, date, attendees, location, coverImage, level } = eventInfo;
+
+  const { name, date, attendees, location, coverImage, level } =
+    eventInfo || defaultEventInfo;
   return (
-    <Card sx={{ width: 500, backgroundColor: "white" }}>
+    <Card sx={{ width: width || 500, height: height || null,  backgroundColor: "white",}}>
       <div>
         <Typography level="title-lg">{name}</Typography>
         <Typography level="body-sm">
@@ -58,7 +57,7 @@ export default function EventCard() {
           size="sm"
           color="primary"
           aria-label="Explore Bahamas Islands"
-          sx={{ ml: "auto", alignSelf: "center", fontWeight: 600 }}
+          sx={{ ml: "auto", alignSelf: "center", fontWeight: 600, marginTop: 'auto', }}
         >
           Explore
         </Button>

@@ -186,7 +186,9 @@ export default function EntryPage() {
           How PickUp Works
         </Typography>
         <HowItWorks />
-
+        <Typography variant="h2" align="center" marginBottom={5} marginTop={5}>
+          Upcoming PickUp Games Near You
+        </Typography>
         <UpcomingGames />
       </main>
       {/* Footer */}
