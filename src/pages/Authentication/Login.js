@@ -50,7 +50,7 @@ export default function SignIn({ toggleAuthMode }) {
               t.palette.mode === "light"
                 ? t.palette.grey[50]
                 : t.palette.grey[900],
-            backgroundSize: "170%",
+            backgroundSize: "cover",
             backgroundPosition: "center right",
           }}
         />
