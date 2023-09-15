@@ -1,24 +1,23 @@
 import React from "react";
-import map from "lodash/map";
-import range from "lodash/range";
 import EventCard from "../EventCard/EventCard";
+import mockEventInfos from "./mockEventInfos";
 
 export default function UpcomingGames() {
   return (
     <>
       <div style={{ width: "100%", overflow: "auto", display: "flex" }}>
-        {map(range(6), (_) => (
-          <Container key={_} />
+        {mockEventInfos.map((event, index) => (
+          <Container key={`${event.name}-${index}`} info={event} />
         ))}
       </div>
     </>
   );
 }
 
-const Container = () => {
+const Container = ({ info }) => {
   return (
     <div style={{ height: "30rem", width: "40rem", margin: "2rem" }}>
-      <EventCard />
+      <EventCard eventInfo={info} />
     </div>
   );
 };

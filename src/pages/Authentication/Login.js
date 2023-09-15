@@ -50,7 +50,7 @@ export default function SignIn({ toggleAuthMode }) {
               t.palette.mode === "light"
                 ? t.palette.grey[50]
                 : t.palette.grey[900],
-            backgroundSize: "170%",
+            backgroundSize: "cover",
             backgroundPosition: "center right",
           }}
         />
@@ -158,9 +158,9 @@ export default function SignIn({ toggleAuthMode }) {
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2">
+                  {/* <Link href="#" variant="body2">
                     Forgot password?
-                  </Link>
+                  </Link> */}
                 </Grid>
                 <Grid item>
                   <Link onClick={toggleAuthMode} variant="body2">
