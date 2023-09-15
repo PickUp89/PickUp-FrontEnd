@@ -16,6 +16,7 @@ import HowItWorks from "../../components/HowItWorks/HowItWorks";
 import UpcomingGames from "../../components/UpcomingGames/UpcomingGames";
 import CardActionArea from "@mui/material/CardActionArea";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { useNavigate } from "react-router-dom";
 
 const cards = [
   {
@@ -46,6 +47,7 @@ const cards = [
 
 export default function EntryPage() {
   const [isHovered, setIsHovered] = useState({});
+  const navigate = useNavigate();
   return (
     // <ThemeProvider>
     <>
@@ -91,7 +93,7 @@ export default function EntryPage() {
               variant={isHovered ? "contained" : "outlined"}
               onMouseOver={() => setIsHovered(true)}
               onMouseOut={() => setIsHovered(false)}
-              href="/auth"
+              onClick={() => navigate("/auth")}
             >
               Join Now
             </Button>
@@ -152,7 +154,7 @@ export default function EntryPage() {
                       <Typography>{card.description}</Typography>
                     </CardContent>
                     <CardActions sx={{ height: "10px" }}>
-                      <Link href={card.link}>
+                      <Link onClick={() => navigate(card.link)}>
                         <Box display="flex" alignItems="center" gap={1}>
                           <Typography gutterBottom variant="h5">
                             {card.action}
